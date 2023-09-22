@@ -1,0 +1,17 @@
+blockchainNetwork: 'devnet'
+corsOriginAccess: '*'
+prefix: ''
+database:
+  connectionString: 'mongodb://localhost:27017'
+  databaseName: 'entityDB-workshop'
+auth:
+  acceptedOrigins:
+    - 'http://localhost:3001'
+    - 'http://[::1]:3001'
+  maxExpirySeconds: 86400
+jwtConfig:
+  cipherIv: '16'
+  cipherPassword: 'abdskojsfaknewinfwewomvklmnsascs'
+  cipherAlgorithm: 'aes-256-cbc'
+urls:
+  internalElrondApi: 'https://api-elrond.entity.global'
