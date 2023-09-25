@@ -3,8 +3,7 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class ApiConfigService {
-    constructor(private readonly configService: ConfigService) {
-    }
+    constructor(private readonly configService: ConfigService) {}
 
     getCorsOriginAccess(): string[] {
         return this.getConfigValue('corsOriginAccess', 'No cors origins config found');
@@ -30,8 +29,8 @@ export class ApiConfigService {
         return this.getConfigValue('database.databaseName', 'No database name found.');
     }
 
-    getInternalElrondApi(): string {
-        return this.getConfigValue('urls.internalElrondApi', 'Internal Elrond Api not found in config files.');
+    getInternalMvxApi(): string {
+        return this.getConfigValue('urls.internalMvxApi', 'Internal Mvx Api not found in config files.');
     }
 
     getAuthAcceptedOrigins(): string[] {

@@ -22,7 +22,7 @@ export class NativeAuthStrategy extends PassportStrategy(Strategy, 'nativeAuth')
         }
 
         this.serverAuth = new NativeAuthServer({
-            apiUrl: this.apiConfigService.getInternalElrondApi(),
+            apiUrl: this.apiConfigService.getInternalMvxApi(),
             acceptedOrigins: this.apiConfigService.getAuthAcceptedOrigins(),
             maxExpirySeconds: Number(this.apiConfigService.getAuthMaxExpirySeconds()),
         });

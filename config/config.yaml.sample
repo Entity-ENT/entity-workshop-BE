@@ -2,4 +2,11 @@ blockchainNetwork: 'devnet'
 corsOriginAccess: '*'
 database:
   connectionString: 'mongodb://localhost:27017'
-  databaseName: 'entityDB'
+  databaseName: 'entity-workshop'
+auth:
+  acceptedOrigins:
+    - 'http://localhost:3001'
+    - 'http://[::1]:3001'
+  maxExpirySeconds: 86400
+urls:
+  internalMvxApi: 'https://api.multiversx.com'

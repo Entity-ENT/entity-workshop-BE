@@ -1,15 +1,25 @@
-import { NestFactory } from '@nestjs/core';
+import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { Logger } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { ApiConfigService } from './common/api-config/api.config.service';
+import { GlobalExceptionsFilter } from './common/exceptions/GlobalExceptionsFilter';
+import * as fs from 'fs';
 
 async function bootstrap() {
     process.on('uncaughtException', function (err) {
         console.log(err);
     });
 
-    const app = await NestFactory.create(AppModule);
+    const httpsOptions = {
+        key: fs.readFileSync('./secrets/localhost-key.pem'),
+        cert: fs.readFileSync('./secrets/localhost.pem'),
+    };
 
+    const app = await NestFactory.create(AppModule, { httpsOptions });
+
+    const httpAdapterHost = app.get(HttpAdapterHost);
+    app.useGlobalFilters(new GlobalExceptionsFilter(httpAdapterHost));
+    app.useGlobalPipes(new ValidationPipe({ transform: true }));
     const apiConfigService = app.get<ApiConfigService>(ApiConfigService);
     app.enableCors({
         origin: function (origin, callback) {
@@ -28,7 +38,7 @@ async function bootstrap() {
         optionsSuccessStatus: 204,
     });
 
-    await app.listen(3000);
+    await app.listen(3000, 'localhost');
 
     Logger.log(`Application is running on: ${await app.getUrl()}`);
 }
