@@ -1,0 +1,5 @@
+blockchainNetwork: 'devnet'
+corsOriginAccess: '*'
+database:
+  connectionString: 'mongodb://localhost:27017'
+  databaseName: 'entityDB'
