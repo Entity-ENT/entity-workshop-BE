@@ -5,8 +5,8 @@ database:
   databaseName: 'entity-workshop'
 auth:
   acceptedOrigins:
-    - 'http://localhost:3001'
-    - 'http://[::1]:3001'
+    - 'https://localhost:3001'
+    - 'https://[::1]:3001'
   maxExpirySeconds: 86400
 urls:
-  internalMvxApi: 'https://api.multiversx.com'
+  internalMvxApi: 'https://devnet-api.multiversx.com'

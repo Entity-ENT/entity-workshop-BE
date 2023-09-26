@@ -29,8 +29,25 @@
 ## Installation
 
 ```bash
-$ npm install
+$ npm install --force
 ```
+
+### Certificate generation
+You need to have a certificate in place to start the server. You can generate one using `openssl` and the following 
+commands:
+```bash
+$ mkdir secrets
+$ cd secrets
+# generates a 2048-bit (recommended) RSA private key.
+$ openssl genrsa -out localhost-key.pem 2048
+# generates a Certificate Signing Request
+$ openssl req -new -sha256 -key localhost-key.pem -out csr.csr
+# generates a self-signed x509 certificate
+$ openssl req -x509 -sha256 -days 365 -key localhost-key.pem -in csr.csr -out localhost.pem
+```
+
+### Mongo
+Make sure you also have a Mongo DB in place.
 
 ## Running the app
 

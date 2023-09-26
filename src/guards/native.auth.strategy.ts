@@ -41,7 +41,6 @@ export class NativeAuthStrategy extends PassportStrategy(Strategy, 'nativeAuth')
             const server = this.getServerAuth();
             await this.serverAuth.validate(jwtToken);
             const payload = await server.decode(jwtToken);
-            console.log(payload);
             return await this.usersService.getOrCreateUserAndLog(payload.address);
         } catch (error) {
             this.logger.error(error);
