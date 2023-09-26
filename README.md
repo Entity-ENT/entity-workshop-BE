@@ -32,6 +32,8 @@
 $ npm install --force
 ```
 
+Make sure you have the right configuration in `config/config.yaml` - `config.yaml.sample` can be used as reference.
+
 ### Certificate generation
 You need to have a certificate in place to start the server. You can generate one using `openssl` and the following 
 commands:
