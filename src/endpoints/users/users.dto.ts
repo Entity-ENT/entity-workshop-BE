@@ -16,8 +16,3 @@ export class UserPublicAddressDto {
 export class UserEmailDto {
     readonly email: string;
 }
-
-export interface UserRolesWrapper {
-    userId: string;
-    roles: string[];
-}
